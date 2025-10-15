@@ -342,14 +342,18 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
         scanf("%d",&sourceIndex);
         printf("enter the destination city index:");
         scanf("%d",&destinationIndex);
+        if(sourceIndex==destinationIndex){
+            return;
+        }
         printf("enter the weight of the item(kg):");
         scanf("%f",&weight);
+
         printf("Enter the type:");
         scanf("%d",&type);
         printf("----------------------------------------------------------------------------------\n\n");
         float DCost,FuelConsump,FuelCost,totalCost,profitCal,finalCharge,diliveryTime;
 
-        if(type == 1)
+        if(type == 1 && weight<1000)
         {
             DCost = distance[sourceIndex][destinationIndex]*30*(1+weight*1.0/10000);
             diliveryTime = distance[sourceIndex][destinationIndex]/60;
@@ -357,7 +361,7 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
 
         }
 
-        else if(type == 2)
+        else if(type == 2 && weight <5000 )
         {
             DCost = distance[sourceIndex][destinationIndex]*40*(1+weight*1/10000);
             diliveryTime = distance[sourceIndex][destinationIndex]/50;
@@ -365,7 +369,7 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
 
         }
 
-        else if(type == 3)
+        else if(type == 3 && weight<10000)
         {
             DCost=distance[sourceIndex][destinationIndex]*80*(1+weight*1/10000);
             diliveryTime = distance[sourceIndex][destinationIndex]/45;
@@ -374,8 +378,8 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
         }
         else
         {
-            printf("Invalid type!\n");
-            continue;
+            printf("Invalid type! or weight > vehicle capasity \n\n\n");
+            return;
         }
         FuelCost=FuelConsump*310.0;
         totalCost=DCost+FuelCost;
