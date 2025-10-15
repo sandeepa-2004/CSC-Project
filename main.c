@@ -199,7 +199,7 @@ void distanceData(int distance[][Max_Cities],char cityData[][20], int count)
     {
         for (j = 0; j < count; j++)
         {
-            if (distance[i][j] < 0) distance[i][j] = 0;  // optional, just safety
+            if (distance[i][j] < 0) distance[i][j] = 0;
         }
     }
     printf("do you want to input distance between two cities(y/n): ");
@@ -486,5 +486,20 @@ for(i=0;i<*count;i++){
 printf("Total Distance Covered: %d km\n",totalDis);
 printf("Average Delivery Time : %.2f hrs.\n",avgTime);
 printf("Total Revenue And Profit : %.2f LKR\n",totalProfit);
+
+int longestRoute = totalDistance[0];
+for(i=0;i<*count;i++ ){
+    if(totalDistance[i]>longestRoute)
+    longestRoute=totalDistance[i];
+}
+printf("Longest Route Completed: %d km\n",longestRoute);
+
+
+int shortestRoute = totalDistance[0];
+for(i=0;i<*count;i++ ){
+    if(totalDistance[i]<shortestRoute)
+    shortestRoute=totalDistance[i];
+}
+printf("Shortest Route Completed: %d km\n\n\n",shortestRoute);
 
 }
