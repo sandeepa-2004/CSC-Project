@@ -140,7 +140,7 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
 
                     printf("enter the new name of city: ");
                     scanf("%s",cityData[i]);
-                    printf("City renamed successfully!\n");
+                    printf("City renamed successfully!\n\n");
                     break;
 
 
@@ -149,7 +149,7 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
 
             }
             if (i == *count)
-                printf("No city named %s found.\n", cityName);
+                printf("No city named %s found.\n\n", cityName);
 
             break;
 
@@ -167,12 +167,12 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
                         strcpy(cityData[j], cityData[j + 1]);
                     }
                     (*count)--;
-                    printf("%s has been successfully deleted.\n", cityName);
+                    printf("%s has been successfully deleted.\n\n", cityName);
                     break;
                 }
             }
             if (i == *count)
-                printf("No city named %s found.\n", cityName);
+                printf("No city named %s found.\n\n", cityName);
             break;
 
         case 4:
@@ -238,12 +238,12 @@ findex = sindex = -1;
             scanf("%d",&dis);
             distance[findex][sindex] = dis;
             distance[sindex][findex] = dis;
-            printf("Distance between %s and %s set to %d km.\n", fcity, scity, dis);
+            printf("Distance between %s and %s set to %d km.\n\n\n", fcity, scity, dis);
         }
 
         else
         {
-            printf("The distance between %s and %s already exists (%d km).\n",fcity, scity, distance[findex][sindex]);
+            printf("The distance between %s and %s already exists (%d km).\n\n\n",fcity, scity, distance[findex][sindex]);
         }
     }
 
@@ -270,18 +270,18 @@ findex = sindex = -1;
         }
         if (findex == -1 || sindex == -1)
         {
-            printf("One or both city names not found.\n");
+            printf("One or both city names not found.\n\n\n");
             return;
         }
         if (distance[findex][sindex] != 0)
         {
             distance[findex][sindex] = 0;
             distance[sindex][findex] = 0;
-            printf("Distance between %s and %s deleted.\n", fcity, scity);
+            printf("Distance between %s and %s deleted.\n\n\n", fcity, scity);
         }
         else
         {
-            printf("No distance recorded between %s and %s.\n", fcity, scity);
+            printf("No distance recorded between %s and %s.\n\n\n", fcity, scity);
         }
 
     }
