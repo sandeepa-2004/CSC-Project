@@ -44,7 +44,9 @@ int main()
 
 
 
-    printf("1. City management\n");
+
+    while(1)
+    { printf("1. City management\n");
     printf("2. Distance management\n");
     printf("3. Vehicale Management\n");
 
@@ -53,9 +55,6 @@ int main()
     printf("6. Finding the Least-cost Route (Least-Distance)\n");
     printf("7. Performance Reports\n");
     printf("8. exit\n\n");
-
-    while(1)
-    {
         printf("Enter your chioce: ");
         scanf("%d",&choice);
         switch(choice)
@@ -101,7 +100,7 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
     printf("1.Add a new City\n");
     printf("2.Rename City\n");
     printf("3.delete City\n");
-    printf("4. excit\n\n");
+    printf("4.back to the main menu\n\n");
     while(1)
     {
 
@@ -180,7 +179,7 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
             return;
             break;
         default:
-            printf("Invalid choice! Try again.\n");
+            printf("Invalid choice! Try again.\n\n");
 
         }
 
@@ -492,6 +491,7 @@ for(i=0;i<*count;i++ ){
     if(totalDistance[i]>longestRoute)
     longestRoute=totalDistance[i];
 }
+
 printf("Longest Route Completed: %d km\n",longestRoute);
 
 
@@ -500,6 +500,7 @@ for(i=0;i<*count;i++ ){
     if(totalDistance[i]<shortestRoute)
     shortestRoute=totalDistance[i];
 }
+
 printf("Shortest Route Completed: %d km\n\n\n",shortestRoute);
 
 }
