@@ -11,7 +11,7 @@ void displayVehicleData(char type[][20],int data[][4]);
 void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], int totalDistance[50]);
 void deliveryReport(int count, float deliveries[][7]);
 void theLeastCostRoute(int distance[][30],int count,char cityData[][20]);
-void performnceReport(int totalDistance[50],float deliveries[][7],int *count);
+void performanceReport(int totalDistance[50],float deliveries[][7],int *count);
 
 
 
@@ -81,7 +81,7 @@ int main()
             theLeastCostRoute( distance,count,cities);
             break;
         case 7:
-            performnceReport(totalDistance,deliveries,&deliveryCount);
+            performanceReport(totalDistance,deliveries,&deliveryCount);
 
 
         }
@@ -471,7 +471,7 @@ if(sIndex >30 || dIndex> 30){
 
 }
 
-void performnceReport(int totalDistance[50],float deliveries[][7],int *count){
+void performanceReport(int totalDistance[50],float deliveries[][7],int *count){
 
 printf("\n\n--------REPORTS-----------\n\n\n");
 
