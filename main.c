@@ -12,8 +12,8 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
 void deliveryReport(int count, float deliveries[][7]);
 void theLeastCostRoute(int distance[][30],int count,char cityData[][20]);
 void performanceReport(int totalDistance[50],float deliveries[][7],int *count);
-void saveCityData(int *count,char cityData[][20]);
-void saveDistanceData(int *count ,int distance[][30]);
+void saveCityAndDistanceData(int count,char cityData[][20],int distance[][30]);
+
 
 
 int main()
@@ -121,10 +121,12 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
                 {
                     distance[*count][i] = 0;
                     distance[i][*count] = 0;
-                }
-                saveCityData(count, cityData);
-                 (*count)++;
 
+                }
+
+                 (*count)++;
+                 int con = *count;
+saveCityAndDistanceData(con, cityData,distance);
                 printf("Do you like to add another city(y/n):");
                 scanf(" %c",&choice1);
             }
@@ -229,14 +231,14 @@ findex = sindex = -1;
 
 
         }
-        saveDistanceData(count ,distance);
+
         if (findex == -1 || sindex == -1)
         {
             printf("One or both city names not found.\n");
             return;
         }
         if (distance[findex][sindex] ==0)
-        {
+        {saveCityAndDistanceData(count, cityData,distance);
             printf("enter the distance: ");
             scanf("%d",&dis);
             distance[findex][sindex] = dis;
@@ -513,35 +515,29 @@ printf("Shortest Route Completed: %d km\n\n\n",shortestRoute);
 }
 
 
-void saveCityData(int *count,char cityData[][20]){
-int i;
+void saveCityAndDistanceData(int count,char cityData[][20],int distance[][30]){
+int i,j;
 FILE *fptr = fopen("cities.txt", "w");
 
-    fprintf(fptr, " Number Of Cities = %d\n\n", *count);
+    fprintf(fptr, " Number Of Cities = %d\n\n", count);
 
 
-    for ( i = 0; i < *count; i++) {
+    for ( i = 0; i < count; i++) {
             fprintf(fptr,"%d \t" ,i);
         fprintf(fptr, "%s\n", cityData[i]);
     }
 
+fprintf(fptr,"\n\n");
 
-
-    fclose(fptr);
-
-}
-
-
-void saveDistanceData(int *count ,int distance[][30])
-{
-    int i,j;
-FILE *fptr = fopen("cities.txt", "w");
-    for ( i = 0; i < *count; i++) {
-        for ( j = 0; j < *count; j++) {
+    for ( i = 0; i < count; i++) {
+        for ( j = 0; j < count; j++) {
             fprintf(fptr, "%d ", distance[i][j]);
         }
         fprintf(fptr, "\n");
     }
 
     fclose(fptr);
+
 }
+
+
