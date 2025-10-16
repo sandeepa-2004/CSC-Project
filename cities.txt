@@ -1,0 +1,13 @@
+ Number Of Cities = 11
+
+0 	kalutara
+1 	jaffna
+2 	colombo
+3 	galle
+4 	matara
+5 	gampaha
+6 	kandy
+7 	weeddded
+8 	reg
+9 	rff
+10 	ffdf
