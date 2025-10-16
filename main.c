@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include  <string.h>
 #define Max_Cities 30
-int count =7;
+int count =0;
 int deliveryCount = 0;
 
 void storeCities(char cityData[][20],int *count,int distance[][30]);
@@ -13,7 +13,7 @@ void deliveryReport(int count, float deliveries[][7]);
 void theLeastCostRoute(int distance[][30],int count,char cityData[][20]);
 void performanceReport(int totalDistance[50],float deliveries[][7],int *count);
 void saveCityAndDistanceData(int count,char cityData[][20],int distance[][30]);
-
+void loadCityAndDistanceDta(int count,int distance[][30],char cityData[][20]);
 
 
 int main()
@@ -25,7 +25,7 @@ int main()
     char Vehicletype[3][20]= {"van","truck","lorry"};
     int vehicleData[3][4] = {{1000,30,60,12},{5000,40,50,16},{10000,80,45,4}};
     int totalDistance[50];
-
+loadCityAndDistanceDta(count, distance, cities);
     char defaultcities[7][20] = {"kalutara", "jaffna", "colombo", "galle","matara","gampaha","kandy"};
     int defaultdistance[7][7]= {{0,400,40,45,79,100,150},{400,0,350,450,500,300,200},{40,350,0,200,250,40,100},{79,450,200,0,50,240,300},{100,500,250,50,0,300,400},{100,300,40,240,300,0,80},{150,200,100,300,400,80,0}};
 
@@ -541,3 +541,28 @@ fprintf(fptr,"\n\n");
 }
 
 
+void loadCityAndDistanceDta(int count,int distance[][30],char cityData[][20]){
+FILE *fptr = fopen("cities.txt","r");
+
+if(fptr == NULL){
+    printf("there is an error in opening file\n\n");
+    return;
+}
+int i,j;
+fscanf(fptr,"%d",count);
+
+for(i=0;i<count;i++){
+
+    fscanf(fptr,"%s",cityData[i]);
+}
+
+ for ( i = 0; i < count; i++) {
+        for ( j = 0; j < count; j++) {
+            fscanf(fptr, "%d ", distance[i][j]);
+        }
+        fprintf(fptr, "\n");
+    }
+
+    fclose(fptr);
+
+}
