@@ -35,6 +35,7 @@ int main()
 
     while(1)
     {
+printf("\n");
         printf("1. City management\n");
         printf("2. Distance management\n");
         printf("3. Vehicale Management\n");
@@ -85,6 +86,7 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
     char choice1,cityName[20];
     int select;
     int i,j;
+    printf("\n");
     printf("1.Add a new City\n");
     printf("2.Rename City\n");
     printf("3.delete City\n");
@@ -132,6 +134,7 @@ saveCityAndDistanceData(*count, cityData,distance);
 
                     printf("enter the new name of city: ");
                     scanf("%s",cityData[i]);
+                    saveCityAndDistanceData(*count, cityData,distance);
                     printf("City renamed successfully!\n\n");
                     break;
 
@@ -159,6 +162,7 @@ saveCityAndDistanceData(*count, cityData,distance);
                         strcpy(cityData[j], cityData[j + 1]);
                     }
                     (*count)--;
+                    saveCityAndDistanceData(*count, cityData,distance);
                     printf("%s has been successfully deleted.\n\n", cityName);
                     break;
                 }
@@ -177,7 +181,6 @@ saveCityAndDistanceData(*count, cityData,distance);
 
 
     }
-
 
 }
 
@@ -307,7 +310,7 @@ saveCityAndDistanceData(count, cityData,distance);
 
 
 void displayVehicleData(char type[][20],int data[][4])
-{
+{printf("\n");
     printf("Type      Capacity(kg)     Rate Per kM(LKR)      Avg Speed(km/h)     Fual Efficiency (km/I)\n\n");
     for(int i=0; i<3; i++)
     {
@@ -410,7 +413,7 @@ void deliveryReport(int count, float deliveries[][7])
 {
     int i;
    saveDeliveryReports( count, deliveries);
-    printf("-----------delivery Report--------------------\n\n");
+    printf("\n\n                              --------------------delivery Report--------------------\n\n");
 
     printf("Deliveery No.   Based Cost         Fuel Used        Fuel Cost       Operational Cost          profit         Customer Charge        Estimated Time   \n\n");
 
@@ -420,7 +423,7 @@ void deliveryReport(int count, float deliveries[][7])
         printf("%2d     %18.2f   %15.2f   %15.2f    %15.2f    %15.2f     %15.2f     %18.2f \n",i+1,deliveries[i][0],deliveries[i][1],deliveries[i][2],deliveries[i][3],deliveries[i][4],deliveries[i][5],deliveries[i][6]);
     }
 
-
+printf("\n\n");
 }
 
 void theLeastCostRoute(int distance[][30],int count,char cityData[][20])
