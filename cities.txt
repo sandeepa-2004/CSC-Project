@@ -1,12 +1,14 @@
- Number Of Cities = 4
+5
 
-0 	s
-1 	s
-2 	jdkd
-3 	ldl
+asws
+sscd
+sdcxs
+kalutara
+aa
 
 
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 1234 
+0 0 0 1234 0 
