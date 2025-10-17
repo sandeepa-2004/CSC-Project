@@ -31,11 +31,11 @@ int main()
     loadCityAndDistanceDta(&count, distance, cities);
     loadDeliveryReports(&deliveryCount,deliveries);
 
-
+printf("  \n\n\n  ================================================= DELIVERY MANAGEMENT SYSTEM ===================================================\n\n\n\n ");
 
     while(1)
     {
-printf("\n");
+        printf("\n");
         printf("1. City management\n");
         printf("2. Distance management\n");
         printf("3. Vehicale Management\n");
@@ -115,7 +115,7 @@ void storeCities(char cityData[][20],int *count,int distance[][30])
 
 
                 (*count)++;
-saveCityAndDistanceData(*count, cityData,distance);
+                saveCityAndDistanceData(*count, cityData,distance);
 
                 printf("Do you like to add another city(y/n):");
                 scanf(" %c",&choice1);
@@ -284,7 +284,7 @@ void distanceData(int distance[][Max_Cities],char cityData[][20], int count)
     }
 
     printf("\n\n");
-saveCityAndDistanceData(count, cityData,distance);
+    saveCityAndDistanceData(count, cityData,distance);
     printf("                      -------Distance table------\n\n");
 
     printf("index No.");
@@ -310,7 +310,8 @@ saveCityAndDistanceData(count, cityData,distance);
 
 
 void displayVehicleData(char type[][20],int data[][4])
-{printf("\n");
+{
+    printf("\n");
     printf("Type      Capacity(kg)     Rate Per kM(LKR)      Avg Speed(km/h)     Fual Efficiency (km/I)\n\n");
     for(int i=0; i<3; i++)
     {
@@ -331,6 +332,7 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
     char choice2;
     do
     {
+        printf("\n");
         printf("=================================================================================\n\n");
         printf("DELIVERY COST ESTIMATION\n\n");
         printf("---------------------------------------------------------------------------------\n\n");
@@ -412,7 +414,7 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
 void deliveryReport(int count, float deliveries[][7])
 {
     int i;
-   saveDeliveryReports( count, deliveries);
+    saveDeliveryReports( count, deliveries);
     printf("\n\n                              --------------------delivery Report--------------------\n\n");
 
     printf("Deliveery No.   Based Cost         Fuel Used        Fuel Cost       Operational Cost          profit         Customer Charge        Estimated Time   \n\n");
@@ -423,7 +425,7 @@ void deliveryReport(int count, float deliveries[][7])
         printf("%2d     %18.2f   %15.2f   %15.2f    %15.2f    %15.2f     %15.2f     %18.2f \n",i+1,deliveries[i][0],deliveries[i][1],deliveries[i][2],deliveries[i][3],deliveries[i][4],deliveries[i][5],deliveries[i][6]);
     }
 
-printf("\n\n");
+    printf("\n\n");
 }
 
 void theLeastCostRoute(int distance[][30],int count,char cityData[][20])
@@ -606,34 +608,34 @@ void saveDeliveryReports(int count,float deliveries[][7])
 
 
     }
-fclose(fptr);
+    fclose(fptr);
 
 
 }
 
 
- void loadDeliveryReports(int *count,float deliveries[][7])
+void loadDeliveryReports(int *count,float deliveries[][7])
+{
+    FILE *fptr = fopen("deliveries.txt","r");
+    int i,j;
+    if(fptr == NULL)
     {
-        FILE *fptr = fopen("deliveries.txt","r");
-        int i,j;
-        if(fptr == NULL)
-        {
-            printf("No Previous records in your program! \n\n");
-            *count =0;
-            return;
-        }
-        fscanf(fptr, " %d\n\n", count);
+        printf("No Previous records in your program! \n\n");
+        *count =0;
+        return;
+    }
+    fscanf(fptr, " %d\n\n", count);
 
-        for(i=0; i<*count; i++)
+    for(i=0; i<*count; i++)
+    {
+        for(j=0; j<7; j++)
         {
-            for(j=0; j<7; j++)
-            {
-                fscanf(fptr, "%f", &deliveries[i][j]);
-
-            }
+            fscanf(fptr, "%f", &deliveries[i][j]);
 
         }
-
-        fclose(fptr);
 
     }
+
+    fclose(fptr);
+
+}
