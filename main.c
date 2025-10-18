@@ -31,21 +31,21 @@ int main()
     loadCityAndDistanceDta(&count, distance, cities);
     loadDeliveryReports(&deliveryCount,deliveries);
 
-printf("  \n\n\n  ================================================= DELIVERY MANAGEMENT SYSTEM ===================================================\n\n\n\n ");
+    printf("  \n\n\n  ================================================= DELIVERY MANAGEMENT SYSTEM ===================================================\n\n\n\n ");
 
     while(1)
     {
         printf("\n");
         printf("1. City management\n");
         printf("2. Distance management\n");
-        printf("3. Vehicale Management\n");
+        printf("3. Manage vehicle Information\n");
 
         printf("4. Cast,Time and Fuel Calculation\n");
-        printf("5. Delivary Records\n");
+        printf("5. Delivery Records\n");
         printf("6. Finding the Least-cost Route (Least-Distance)\n");
         printf("7. Performance Reports\n");
-        printf("8. exit\n\n");
-        printf("Enter your chioce: ");
+        printf("8. exit program\n\n");
+        printf("Enter your choice: ");
         scanf("%d",&choice);
         switch(choice)
         {
@@ -71,7 +71,12 @@ printf("  \n\n\n  ================================================= DELIVERY MAN
             break;
         case 7:
             performanceReport(totalDistance,deliveries,&deliveryCount);
-
+            break;
+        case 8:
+            printf("Exiting the Program....\n\n");
+        default:
+            printf("invalid choice. Please try again. \n\n");
+            break;
         }
 
 
