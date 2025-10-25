@@ -47,6 +47,7 @@ int main()
         printf("8. exit program\n\n");
         printf("Enter your choice: ");
         scanf("%d",&choice);
+        printf("\n");
         switch(choice)
         {
         case 1:
@@ -201,6 +202,7 @@ void distanceData(int distance[][Max_Cities],char cityData[][20], int count)
             if (distance[i][j] < 0) distance[i][j] = 0;
         }
     }
+
     printf("do you want to input distance between two cities(y/n): ");
     scanf(" %c",&c);
     if(c=='y'||c=='Y')
@@ -247,7 +249,15 @@ void distanceData(int distance[][Max_Cities],char cityData[][20], int count)
         {
             printf("The distance between %s and %s already exists (%d km).\n\n\n",fcity, scity, distance[findex][sindex]);
         }
+
+
+
+
     }
+
+
+
+
 
     printf("do you want to delete distance between two cities(y/n): ");
     scanf(" %c",&c);
@@ -311,9 +321,9 @@ void distanceData(int distance[][Max_Cities],char cityData[][20], int count)
         printf("\n");
     }
     printf("\n\n");
+
+
 }
-
-
 void displayVehicleData(char type[][20],int data[][4])
 {
     printf("\n");
@@ -440,6 +450,8 @@ void theLeastCostRoute(int distance[][30],int count,char cityData[][20])
     scanf("%d",&sIndex);
     printf("enter the destination city index:");
     scanf("%d",&dIndex);
+
+
     if(sIndex >30 || dIndex> 30)
     {
         printf("invalid Index!..Please try Again\n\n");
@@ -447,7 +459,11 @@ void theLeastCostRoute(int distance[][30],int count,char cityData[][20])
 
     }
     int minDistance= distance[sIndex][dIndex];
-
+ if ( minDistance==0)
+    {
+        printf("\n\nThe Data not entered yet!\n\n");
+        return;
+    }
     for(i=0; i<count; i++)
     {
         if(i!=sIndex && i!=dIndex)
