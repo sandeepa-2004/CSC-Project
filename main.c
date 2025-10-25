@@ -40,7 +40,7 @@ int main()
         printf("2. Distance management\n");
         printf("3. Manage vehicle Information\n");
 
-        printf("4. Cast,Time and Fuel Calculation\n");
+        printf("4. Cost,Time and Fuel Calculation\n");
         printf("5. Delivery Records\n");
         printf("6. Finding the Least-cost Route (Least-Distance)\n");
         printf("7. Performance Reports\n");
@@ -75,6 +75,7 @@ int main()
             break;
         case 8:
             printf("Exiting the Program....\n\n");
+            break;
         default:
             printf("invalid choice. Please try again. \n\n");
             break;
@@ -407,7 +408,7 @@ void diliveryCalculatoin(int distance[][30],int *count,float deliveries[][7], in
         printf("Operational Cost:%.3f\n",totalCost);
         printf("profit:%.3f\n",profitCal);
         printf("Customer Charge:%.3f\n",finalCharge);
-        printf("Estimated Time:%.3f\n",diliveryTime);
+        printf("Estimated Time:%.2f\n",diliveryTime);
         printf("===================================================================================\n\n");
 
         deliveries[*count][0]=DCost;
@@ -503,16 +504,17 @@ void performanceReport(int totalDistance[50],float deliveries[][7],int *count)
     printf("\n\n--------REPORTS-----------\n\n\n");
 
     printf("Total Deliveries Completed: %d\n",*count);
-    int i,totalDis =0;
+    int i,totalDis =0,n=1;
     float totalProfit=0.0,avgTime=0.0;
     for(i=0; i<*count; i++)
     {
         totalDis+=totalDistance[i];
         totalProfit+=deliveries[i][4];
         avgTime+=deliveries[i][6];
+        n=i;
     }
     printf("Total Distance Covered: %d km\n",totalDis);
-    printf("Average Delivery Time : %.2f hrs.\n",avgTime);
+    printf("Average Delivery Time : %.2f hrs.\n",avgTime/n);
     printf("Total Revenue And Profit : %.2f LKR\n",totalProfit);
 
     int longestRoute = totalDistance[0];
